@@ -33,12 +33,12 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
 
   const navLinks = [
     { name: t.home, href: '#' },
-    { name: t.soilxpert, href: '#soilxpert' },
-    { name: t.greenvita, href: '#greenvita' },
-    { name: t.skycast, href: '#skycast' },
-    { name: t.agrigear, href: '#agrigear' },
-    { name: t.yieldmart, href: '#yieldmart' },
-    { name: t.agriverse, href: '#agriverse' },
+    { name: t.soilxpert, href: '#soilxpert', feature: true },
+    { name: t.greenvita, href: '#greenvita', feature: true },
+    { name: t.skycast, href: '#skycast', feature: true },
+    { name: t.agrigear, href: '#agrigear', feature: true },
+    { name: t.yieldmart, href: '#yieldmart', feature: true },
+    { name: t.agriverse, href: '#agriverse', feature: true },
   ];
 
   return (
@@ -58,12 +58,14 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:gap-x-8">
+          <div className="hidden md:flex md:items-center md:gap-x-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors nav-link"
+                className={`text-sm font-medium transition-colors nav-link ${
+                  link.feature ? 'text-agro-700 hover:text-agro-800' : 'text-foreground/80 hover:text-primary'
+                }`}
               >
                 {link.name}
               </a>
@@ -97,7 +99,9 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
             <a
               key={link.name}
               href={link.href}
-              className="block px-3 py-2 text-base font-medium text-foreground/80 hover:text-primary rounded-md hover:bg-secondary/50 transition-colors"
+              className={`block px-3 py-2 text-base font-medium rounded-md hover:bg-secondary/50 transition-colors ${
+                link.feature ? 'text-agro-700 hover:text-agro-800' : 'text-foreground/80 hover:text-primary'
+              }`}
               onClick={closeMenu}
             >
               {link.name}

@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -56,12 +56,9 @@
 }
 
 @layer components {
-  .hero-gradient {
-    background: linear-gradient(
-      140deg,
-      theme('colors.agro.50') 0%,
-      theme('colors.agro.100') 100%
-    );
+  .hero-section {
+    background-size: cover;
+    background-position: center;
   }
 
   .glass-nav {
@@ -100,5 +97,72 @@
   .nav-link:hover::after {
     transform-origin: bottom left;
     transform: scaleX(1);
+  }
+
+  .bg-custom-pattern {
+    background-color: #ffffff;
+    background-image: radial-gradient(rgba(0, 128, 0, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .bg-hero-pattern {
+    background-image: url('https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .bg-testimonial-pattern {
+    background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .bg-quotes-pattern {
+    background-image: url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80');
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+.animate-pulse-gentle {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
   }
 }

@@ -29,7 +29,6 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       id={id}
       className="feature-card h-full"
       style={{ 
-        animationDelay: `${delay}ms`, 
         opacity: 0, 
         animation: 'fade-in 0.4s ease-out forwards',
         animationDelay: `${delay}ms`

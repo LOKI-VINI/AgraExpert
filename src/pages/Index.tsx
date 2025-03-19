@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from '@/components/NavBar';
 import Hero from '@/components/Hero';
-import FeatureSection from '@/components/FeatureSection';
 import Footer from '@/components/Footer';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import QuotesSection from '@/components/QuotesSection';
 
 const Index: React.FC = () => {
   const [language, setLanguage] = useState('en');
@@ -23,10 +24,11 @@ const Index: React.FC = () => {
   }
   
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-custom-pattern">
       <NavBar language={language} setLanguage={setLanguage} />
       <Hero language={language} />
-      <FeatureSection language={language} />
+      <QuotesSection language={language} />
+      <TestimonialsSection language={language} />
       <Footer language={language} />
     </div>
   );
