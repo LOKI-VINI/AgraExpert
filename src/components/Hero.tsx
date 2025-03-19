@@ -1,7 +1,5 @@
 
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { translations } from '@/lib/translations';
 
 interface HeroProps {
@@ -13,8 +11,8 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
   
   return (
     <section className="hero-section pt-32 pb-16 md:pt-40 md:pb-24 min-h-screen flex items-center relative overflow-hidden">
-      <div className="absolute inset-0 bg-hero-pattern opacity-15 z-0"></div>
-      <div className="absolute inset-0 bg-gradient-to-b from-agro-50/90 to-white/95 z-0"></div>
+      <div className="absolute inset-0 bg-hero-pattern opacity-40 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-agro-50/80 to-white/90 z-0"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-6 animate-fade-in">
@@ -34,25 +32,33 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
             {t.heroDescription}
           </p>
           
-          <div className="text-2xl md:text-3xl font-serif italic text-agro-700 mt-8 animate-fade-in" style={{ animationDelay: '600ms' }}>
-            "Revolutionizing agriculture with AgroXpert"
+          <div className="pt-16 mt-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 animate-slide-up" style={{ animationDelay: '600ms' }}>
+              <div className="overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-all">
+                <img 
+                  src="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  alt="Agriculture field" 
+                  className="w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-all">
+                <img 
+                  src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  alt="Smart farming" 
+                  className="w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="hidden md:block overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-all">
+                <img 
+                  src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  alt="Harvest" 
+                  className="w-full h-48 object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            </div>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 pt-6 justify-center items-center animate-slide-up" style={{ animationDelay: '700ms' }}>
-            <Button size="lg" className="bg-agro-600 hover:bg-agro-700 text-white">
-              {t.getStarted}
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="group border-agro-200 hover:bg-agro-50"
-            >
-              {t.learnMore}
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </div>
-          
-          <div className="pt-16 max-w-md mx-auto flex justify-center">
+          <div className="pt-12 max-w-md mx-auto flex justify-center">
             <div className="w-1/3 h-1 rounded-full bg-agro-200 animate-pulse-gentle"></div>
           </div>
         </div>

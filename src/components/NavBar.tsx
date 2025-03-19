@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import LanguageSelector from './LanguageSelector';
 import { translations } from '@/lib/translations';
 
@@ -70,17 +71,29 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
                 {link.name}
               </a>
             ))}
-            <LanguageSelector language={language} setLanguage={setLanguage} />
+            <div className="flex items-center gap-4">
+              <LanguageSelector language={language} setLanguage={setLanguage} />
+              <Avatar className="h-8 w-8 border border-agro-200 cursor-pointer hover:ring-2 hover:ring-agro-300 transition-all">
+                <AvatarFallback className="bg-agro-100 text-agro-700">
+                  <User className="h-4 w-4" />
+                </AvatarFallback>
+              </Avatar>
+            </div>
           </div>
 
           {/* Mobile Navigation Toggle */}
           <div className="flex items-center md:hidden">
             <LanguageSelector language={language} setLanguage={setLanguage} />
+            <Avatar className="h-7 w-7 border border-agro-200 mr-2 cursor-pointer">
+              <AvatarFallback className="bg-agro-100 text-agro-700">
+                <User className="h-3 w-3" />
+              </AvatarFallback>
+            </Avatar>
             <Button 
               variant="ghost" 
               size="sm" 
               onClick={toggleMenu} 
-              className="ml-1 p-1"
+              className="p-1"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
