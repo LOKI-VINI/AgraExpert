@@ -5,6 +5,8 @@ import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import QuotesSection from '@/components/QuotesSection';
+import FaqSection from '@/components/FaqSection';
+import FeedbackForm from '@/components/FeedbackForm';
 
 const Index: React.FC = () => {
   const [language, setLanguage] = useState('en');
@@ -29,6 +31,8 @@ const Index: React.FC = () => {
       <Hero language={language} />
       <QuotesSection language={language} />
       <TestimonialsSection language={language} />
+      <FaqSection language={language} />
+      <FeedbackForm language={language} />
       <Footer language={language} />
     </div>
   );
