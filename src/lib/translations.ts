@@ -1,4 +1,3 @@
-
 interface Translation {
   [key: string]: {
     [key: string]: string;
@@ -179,8 +178,8 @@ export const translations: Translation = {
     telugu: "தெலுங்கு",
     bengali: "வங்காளம்",
     marathi: "மராத்தி",
-    gujarati: "குஜராத்தி",
-    kannada: "கன்னடம்",
+    gujarati: "गुजराती",
+    kannada: "ಕನ್ನಡ",
     malayalam: "மலையாளம்",
     punjabi: "பஞ்சாபி",
     
@@ -253,5 +252,53 @@ export const translations: Translation = {
     
     // FAQ Section
     faqTitle: "वारंवार विचारले जाणारे प्रश्न"
+  },
+  kn: {
+    // Navigation
+    home: "ಮುಖಪುಟ",
+    soilxpert: "ಸಾಯಿಲ್​ಎಕ್ಸ್​ಪರ್ಟ್",
+    greenvita: "ಗ್ರೀನ್​ವಿಟಾ",
+    skycast: "ಸ್ಕೈಕಾಸ್ಟ್",
+    agrigear: "ಅಗ್ರಿಗಿಯರ್",
+    yieldmart: "ಯೀಲ್ಡ್​ಮಾರ್ಟ್",
+    agriverse: "ಅಗ್ರಿವರ್ಸ್",
+    
+    // Hero section
+    heroTitle: "ಎಐ ಜೊತೆಗೆ ಕೃಷಿಯಲ್ಲಿ ಕ್ರಾಂತಿ",
+    heroTagline: "ಸ್ಮಾರ್ಟ್ ಕೃಷಿ, ಉತ್ತಮ ಇಳುವರಿ, ಸುಸ್ಥಿರ ಭವಿಷ್ಯ",
+    heroDescription: "ಅಗ್ರೋಎಕ್ಸ್ಪರ್ಟ್ ಆಧುನಿಕ ಎಐ ತಂತ್ರಜ್ಞಾನವನ್ನು ಕೃಷಿ ತಜ್ಞತೆಯೊಂದಿಗೆ ಸಂಯೋಜಿಸಿ ರೈತರು ತಮ್ಮ ಇಳುವರಿಯನ್ನು ಅನುಕೂಲಿಸಲು, ವೆಚ್ಚ ಕಡಿಮೆ ಮಾಡಲು ಮತ್ತು ಸುಸ್ಥಿರ ಕೃಷಿ ಅಭ್ಯಾಸ ಮಾಡಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
+    getStarted: "ಆರಂಭಿಸಿ",
+    learnMore: "ಇನ್ನಷ್ಟು ತಿಳಿಯಿರಿ",
+    
+    // Feature sections
+    soilxpertTitle: "ಸಾಯಿಲ್​ಎಕ್ಸ್​ಪರ್ಟ್",
+    soilxpertDescription: "ಎಐ-ಆಧಾರಿತ ವಿಶ್ಲೇಷಣೆಯನ್ನು ಬಳಸಿ ಆಧುನಿಕ ಮಣ್ಣು ಪರೀಕ್ಷೆ, ವೈಯಕ್ತಿಕ ಬೆಳೆ ಶಿಫಾರಸುಗಳು ಮತ್ತು ಇಳುವರಿ ಮುನ್ಸೂಚನೆ.",
+    
+    // Language
+    language: "ಭಾಷೆ",
+    english: "ಇಂಗ್ಲಿಷ್",
+    hindi: "ಹಿಂದಿ",
+    tamil: "ತಮಿಳು",
+    telugu: "ತೆಲುಗು",
+    bengali: "ಬಂಗಾಳಿ",
+    marathi: "ಮರಾಠಿ",
+    gujarati: "ಗುಜರಾತಿ",
+    kannada: "ಕನ್ನಡ",
+    malayalam: "ಮಲಯಾಳಂ",
+    punjabi: "ಪಂಜಾಬಿ",
+    
+    // Footer
+    contactUs: "ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ",
+    followUs: "ನಮ್ಮನ್ನು ಅನುಸರಿಸಿ",
+    
+    // FAQ Section
+    faqTitle: "ಪದೇ ಪದೇ ಕೇಳಲಾಗುವ ಪ್ರಶ್ನೆಗಳು",
+    
+    // Feedback Form
+    feedbackTitle: "ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ಕಳುಹಿಸಿ",
+    yourName: "ನಿಮ್ಮ ಹೆಸರು",
+    yourEmail: "ನಿಮ್ಮ ಇಮೇಲ್",
+    yourMessage: "ನಿಮ್ಮ ಸಂದೇಶ",
+    submit: "ಸಲ್ಲಿಸಿ"
   }
 };

@@ -74,6 +74,13 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ language, setLangua
             {t.marathi}
             {language === 'mr' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
+          <DropdownMenuItem 
+            className="flex items-center justify-between cursor-pointer" 
+            onClick={() => setLanguage('kn')}
+          >
+            {t.kannada}
+            {language === 'kn' && <Check className="h-4 w-4" />}
+          </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
