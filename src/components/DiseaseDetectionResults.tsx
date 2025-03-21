@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { translations } from '@/lib/translations';
-import { Alert, AlertCircle, Bug, Info, Leaf, Loader2, ThumbsUp, X } from 'lucide-react';
+import { AlertCircle, Bug, Info, Leaf, Loader2, ThumbsUp, BellRing } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 
 interface Pesticide {
@@ -129,7 +129,7 @@ const DiseaseDetectionResults: React.FC<DiseaseDetectionResultsProps> = ({
         {/* Pesticides */}
         <div className="bg-purple-50 rounded-lg p-4">
           <div className="flex items-center mb-3">
-            <Alert className="h-5 w-5 text-purple-700 mr-2" />
+            <BellRing className="h-5 w-5 text-purple-700 mr-2" />
             <h3 className="font-semibold text-purple-800">{t.recommendedPesticides || "Recommended Pesticides"}</h3>
           </div>
           <div className="space-y-4">
