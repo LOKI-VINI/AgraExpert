@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import LanguageSelector from './LanguageSelector';
 import { translations } from '@/lib/translations';
+import { Link, useLocation } from 'react-router-dom';
 
 interface NavBarProps {
   language: string;
@@ -14,6 +15,7 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
   const t = translations[language];
 
   useEffect(() => {
@@ -33,9 +35,9 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
   const closeMenu = () => setIsOpen(false);
 
   const navLinks = [
-    { name: t.home, href: '#' },
+    { name: t.home, href: '/' },
     { name: t.soilxpert, href: '#soilxpert', feature: true },
-    { name: t.greenvita, href: '#greenvita', feature: true },
+    { name: t.greenvita, href: '/greenvita', feature: true },
     { name: t.skycast, href: '#skycast', feature: true },
     { name: t.agrigear, href: '#agrigear', feature: true },
     { name: t.yieldmart, href: '#yieldmart', feature: true },
@@ -50,26 +52,26 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <a 
-            href="#" 
+          <Link 
+            to="/" 
             className="flex items-center space-x-2 text-primary font-semibold text-xl"
             onClick={closeMenu}
           >
             <span className="text-agro-700 font-bold tracking-tight">AgroXpert</span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:gap-x-6">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.href.startsWith('#') ? `/${link.href}` : link.href}
                 className={`text-sm font-medium transition-colors nav-link ${
                   link.feature ? 'text-agro-700 hover:text-agro-800' : 'text-foreground/80 hover:text-primary'
-                }`}
+                } ${location.pathname === link.href ? 'font-semibold' : ''}`}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
             <div className="flex items-center gap-4">
               <LanguageSelector language={language} setLanguage={setLanguage} />
@@ -109,16 +111,16 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
       >
         <div className="container mx-auto px-4 pt-2 pb-3 space-y-1 sm:px-3">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
+              to={link.href.startsWith('#') ? `/${link.href}` : link.href}
               className={`block px-3 py-2 text-base font-medium rounded-md hover:bg-secondary/50 transition-colors ${
                 link.feature ? 'text-agro-700 hover:text-agro-800' : 'text-foreground/80 hover:text-primary'
-              }`}
+              } ${location.pathname === link.href ? 'font-semibold' : ''}`}
               onClick={closeMenu}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
       </div>

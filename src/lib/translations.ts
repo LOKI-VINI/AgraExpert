@@ -26,7 +26,8 @@ export const translations: Translation = {
     soilxpertTitle: "SoilXpert",
     soilxpertDescription: "Advanced soil testing, personalized crop recommendations, and yield prediction using AI-driven analysis.",
     greenvitaTitle: "GreenVita",
-    greenvitaDescription: "Detect plant diseases early and get custom pesticide recommendations to keep your crops healthy.",
+    greenvitaDescription: "AI-Powered Plant Disease Detection & Care",
+    greenvitaTagline: "Upload images of your plants to identify diseases, get treatment recommendations, and protect your crops.",
     skycastTitle: "SkyCast",
     skycastDescription: "Hyperlocal real-time weather forecasting and alerts designed specifically for agricultural planning.",
     agrigearTitle: "AgriGear",
@@ -85,7 +86,31 @@ export const translations: Translation = {
     faq8Title: "What is AgriVerse?",
     faq8Answer: "AgriVerse is a discussion forum and social platform where farmers share expertise and experiences.",
     faq9Title: "Is AgroXpert multilingual?",
-    faq9Answer: "Yes, AgroXpert offers multilingual support for wider accessibility."
+    faq9Answer: "Yes, AgroXpert offers multilingual support for wider accessibility.",
+    
+    // GreenVita specific translations
+    uploadImage: "Upload Plant Image",
+    dragAndDrop: "Drag and drop your image here",
+    orClickToUpload: "or click to upload (max. 5MB)",
+    detectDisease: "Detect Disease",
+    newDetection: "Start New Detection",
+    detectionResults: "Detection Results",
+    processingImage: "Processing your image",
+    aiAnalysing: "Our AI is analyzing your plant image to identify any diseases and recommend treatments...",
+    detectionError: "Detection Error",
+    tryAgain: "Please try uploading a different image or try again later.",
+    noImageUploaded: "No results yet",
+    uploadToDetect: "Upload a plant image and click 'Detect Disease' to get analysis results.",
+    analysingImage: "Analyzing image...",
+    disease: "Disease",
+    confidence: "Confidence",
+    cause: "Cause",
+    remedies: "Remedies & Prevention",
+    recommendedPesticides: "Recommended Pesticides",
+    pleaseUploadImage: "Please upload an image first",
+    errorDetecting: "An error occurred during disease detection. Please try again.",
+    onlyImageFiles: "Please upload only image files",
+    fileTooLarge: "File is too large. Maximum size is 5MB"
   },
   hi: {
     // Navigation
@@ -167,7 +192,31 @@ export const translations: Translation = {
     faq8Title: "एग्रीवर्स क्या है?",
     faq8Answer: "एग्रीवर्स एक चर्चा मंच और सामाजिक प्लेटफॉर्म है जहां किसान विशेषज्ञता और अनुभव साझा करते हैं।",
     faq9Title: "क्या एग्रोएक्सपर्ट बहुभाषी है?",
-    faq9Answer: "हां, एग्रोएक्सपर्ट व्यापक पहुंच के लिए बहुभाषी समर्थन प्रदान करता है।"
+    faq9Answer: "हां, एग्रोएक्सपर्ट व्यापक पहुंच के लिए बहुभाषी समर्थन प्रदान करता है।",
+    
+    // GreenVita specific translations for Hindi
+    uploadImage: "पौधे की छवि अपलोड करें",
+    dragAndDrop: "अपनी छवि यहां खींचें और छोड़ें",
+    orClickToUpload: "या अपलोड करने के लिए क्लिक करें (अधिकतम 5MB)",
+    detectDisease: "रोग का पता लगाएं",
+    newDetection: "नई जांच शुरू करें",
+    detectionResults: "जांच के परिणाम",
+    processingImage: "आपकी छवि प्रोसेसिंग हो रही है",
+    aiAnalysing: "हमारी AI आपके पौधे की छवि का विश्लेषण करके रोगों की पहचान और उपचार की सिफारिशें कर रही है...",
+    detectionError: "जांच में त्रुटि",
+    tryAgain: "कृपया एक अलग छवि अपलोड करें या बाद में पुनः प्रयास करें।",
+    noImageUploaded: "अभी तक कोई परिणाम नहीं",
+    uploadToDetect: "विश्लेषण परिणाम प्राप्त करने के लिए एक पौधे की छवि अपलोड करें और 'रोग का पता लगाएं' पर क्लिक करें।",
+    analysingImage: "छवि का विश्लेषण हो रहा है...",
+    disease: "रोग",
+    confidence: "विश्वास",
+    cause: "कारण",
+    remedies: "उपचार और रोकथाम",
+    recommendedPesticides: "अनुशंसित कीटनाशक",
+    pleaseUploadImage: "कृपया पहले एक छवि अपलोड करें",
+    errorDetecting: "रोग का पता लगाने के दौरान एक त्रुटि हुई। कृपया पुनः प्रयास करें।",
+    onlyImageFiles: "कृपया केवल छवि फ़ाइलें अपलोड करें",
+    fileTooLarge: "फ़ाइल बहुत बड़ी है। अधिकतम आकार 5MB है"
   },
   ta: {
     // Basic translations for Tamil
@@ -188,7 +237,17 @@ export const translations: Translation = {
     contactUs: "தொடர்பு கொள்ளவும்",
     
     // FAQ Section
-    faqTitle: "அடிக்கடி கேட்கப்படும் கேள்விகள்"
+    faqTitle: "அடிக்கடி கேட்கப்படும் கேள்விகள்",
+    
+    // GreenVita specific translations
+    uploadImage: "தாவர படத்தை பதிவேற்றவும்",
+    dragAndDrop: "உங்கள் படத்தை இங்கே இழுத்து விடவும்",
+    detectDisease: "நோயைக் கண்டறியவும்",
+    detectionResults: "கண்டறிதல் முடிவுகள்",
+    disease: "நோய்",
+    confidence: "நம்பிக்கை",
+    cause: "காரணம்",
+    remedies: "தீர்வுகள் & தடுப்பு"
   },
   te: {
     // Basic translations for Telugu
@@ -209,7 +268,13 @@ export const translations: Translation = {
     contactUs: "మమ్మల్ని సంప్రదించండి",
     
     // FAQ Section
-    faqTitle: "తరచుగా అడిగే ప్రశ్నలు"
+    faqTitle: "తరచుగా అడిగే ప్రశ్నలు",
+    
+    // Basic GreenVita specific translations
+    uploadImage: "మొక్క చిత్రాన్ని అప్‌లోడ్ చేయండి",
+    detectDisease: "వ్యాధిని కనుగొనండి",
+    disease: "వ్యాధి",
+    remedies: "చికిత్సలు"
   },
   bn: {
     // Basic translations for Bengali 
@@ -230,7 +295,12 @@ export const translations: Translation = {
     contactUs: "যোগাযোগ করুন",
     
     // FAQ Section
-    faqTitle: "সাধারণত জিজ্ঞাসিত প্রশ্নাবলী"
+    faqTitle: "সাধারণত জিজ্ঞাসিত প্রশ্নাবলী",
+    
+    // Basic GreenVita specific translations
+    uploadImage: "গাছের ছবি আপলোড করুন",
+    detectDisease: "রোগ সনাক্ত করুন",
+    disease: "রোগ"
   },
   mr: {
     // Basic translations for Marathi
@@ -251,7 +321,13 @@ export const translations: Translation = {
     contactUs: "संपर्क करा",
     
     // FAQ Section
-    faqTitle: "वारंवार विचारले जाणारे प्रश्न"
+    faqTitle: "वारंवार विचारले जाणारे प्रश्न",
+    
+    // Basic GreenVita specific translations
+    uploadImage: "वनस्पतीची प्रतिमा अपलोड करा",
+    detectDisease: "रोग शोधा",
+    disease: "रोग",
+    remedies: "उपचार"
   },
   kn: {
     // Navigation
@@ -299,6 +375,30 @@ export const translations: Translation = {
     yourName: "ನಿಮ್ಮ ಹೆಸರು",
     yourEmail: "ನಿಮ್ಮ ಇಮೇಲ್",
     yourMessage: "ನಿಮ್ಮ ಸಂದೇಶ",
-    submit: "ಸಲ್ಲಿಸಿ"
+    submit: "ಸಲ್ಲಿಸಿ",
+    
+    // GreenVita specific translations for Kannada
+    uploadImage: "ಸಸ್ಯದ ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+    dragAndDrop: "ನಿಮ್ಮ ಚಿತ್ರವನ್ನು ಇಲ್ಲಿ ಎಳೆದು ಬಿಡಿ",
+    orClickToUpload: "ಅಥವಾ ಅಪ್‌ಲೋಡ್ ಮಾಡಲು ಕ್ಲಿಕ್ ಮಾಡಿ (ಗರಿಷ್ಠ 5MB)",
+    detectDisease: "ರೋಗವನ್ನು ಪತ್ತೆಹಚ್ಚಿ",
+    newDetection: "ಹೊಸ ಪತ್ತೆಯನ್ನು ಪ್ರಾರಂಭಿಸಿ",
+    detectionResults: "ಪತ್ತೆಯ ಫಲಿತಾಂಶಗಳು",
+    processingImage: "ನಿಮ್ಮ ಚಿತ್ರವನ್ನು ಸಂಸ್ಕರಿಸಲಾಗುತ್ತಿದೆ",
+    aiAnalysing: "ನಮ್ಮ AI ನಿಮ್ಮ ಸಸ್ಯದ ಚಿತ್ರವನ್ನು ವಿಶ್ಲೇಷಿಸಿ ರೋಗಗಳನ್ನು ಗುರುತಿಸುತ್ತಿದೆ ಮತ್ತು ಚಿಕಿತ್ಸೆಯನ್ನು ಶಿಫಾರಸು ಮಾಡುತ್ತಿದೆ...",
+    detectionError: "ಪತ್ತೆಯಲ್ಲಿ ದೋಷ",
+    tryAgain: "ದಯವಿಟ್ಟು ಬೇರೆ ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ ಅಥವಾ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    noImageUploaded: "ಇನ್ನೂ ಯಾವುದೇ ಫಲಿತಾಂಶಗಳಿಲ್ಲ",
+    uploadToDetect: "ವಿಶ್ಲೇಷಣೆ ಫಲಿತಾಂಶಗಳನ್ನು ಪಡೆಯಲು ಸಸ್ಯದ ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ ಮತ್ತು 'ರೋಗವನ್ನು ಪತ್ತೆಹಚ್ಚಿ' ಕ್ಲಿಕ್ ಮಾಡಿ.",
+    analysingImage: "ಚಿತ್ರವನ್ನು ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ...",
+    disease: "ರೋಗ",
+    confidence: "ವಿಶ್ವಾಸ",
+    cause: "ಕಾರಣ",
+    remedies: "ಪರಿಹಾರಗಳು ಮತ್ತು ತಡೆಗಟ್ಟುವಿಕೆ",
+    recommendedPesticides: "ಶಿಫಾರಸು ಮಾಡಿದ ಕೀಟನಾಶಕಗಳು",
+    pleaseUploadImage: "ದಯವಿಟ್ಟು ಮೊದಲು ಒಂದು ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+    errorDetecting: "ರೋಗ ಪತ್ತೆ ಮಾಡುವಾಗ ದೋಷ ಸಂಭವಿಸಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    onlyImageFiles: "ದಯವಿಟ್ಟು ಚಿತ್ರ ಫೈಲ್‌ಗಳನ್ನು ಮಾತ್ರ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+    fileTooLarge: "ಫೈಲ್ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ. ಗರಿಷ್ಠ ಗಾತ್ರ 5MB"
   }
 };
