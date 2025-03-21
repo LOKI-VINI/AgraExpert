@@ -1,3 +1,4 @@
+
 export const translations = {
   en: {
     welcome: "Welcome",
@@ -136,7 +137,7 @@ export const translations = {
     contactOptions: "Contact Options",
     available: "available",
     call: "Call",
-    email: "Email",
+    // email key already defined above
     noBuyersFound: "No buyers found matching your search criteria.",
     
     recentPriceUpdates: "Recent Price Updates",
@@ -402,11 +403,8 @@ export const translations = {
     buyerNamePlaceholder: "आपकी कंपनी या व्यक्तिगत नाम",
     productName: "उत्पाद का नाम",
     productNamePlaceholder: "जैसे, जैविक गेहूं, चावल, हल्दी",
-    pricePerUnit: "प्रति इकाई मूल्य (₹/किलो)",
     pricePerUnitPlaceholder: "अपना प्रस्तावित मूल्य दर्ज करें",
-    quantity: "मात्रा (किलो)",
     quantityPlaceholder: "आप कितना खरीदना चाहते हैं",
-    contactEmail: "संपर्क ईमेल",
     contactEmailPlaceholder: "आपका ईमेल पता",
     contactPhone: "संपर्क फोन",
     contactPhonePlaceholder: "आपका फोन नंबर",
@@ -422,7 +420,6 @@ export const translations = {
     contactOptions: "संपर्क विकल्प",
     available: "उपलब्ध",
     call: "कॉल",
-    email: "ईमेल",
     noBuyersFound: "आपके खोज मानदंड से मेल खाने वाले कोई खरीदार नहीं मिले।",
     recentPriceUpdates: "हाल के मूल्य अपडेट",
     recentPriceUpdatesDescription: "खरीदारों से नवीनतम मूल्य परिवर्तनों के साथ सूचित रहें।",
@@ -440,3 +437,4 @@ export const translations = {
     faqAnswer5: "शुरू करना आसान है! बस एक खाता बनाएं, हमारी सुविधाओं का पता लगाएं, और अपनी वर्तमान कृषि जरूरतों के लिए सबसे प्रासंगिक उपकरणों के साथ शुरू करें। हमारा सहज इंटरफेस उपयोगकर्ता के अनुकूल होने के लिए डिज़ाइन किया गया है, यहां तक कि सीमित तकनीकी अनुभव वालों के लिए भी।"
   }
 };
+
