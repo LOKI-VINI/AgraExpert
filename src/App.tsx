@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import GreenVita from "./pages/GreenVita";
 import SoilXpert from "./pages/SoilXpert";
+import AgriVerse from "./pages/AgriVerse";
 import NotFound from "./pages/NotFound";
 import React from "react";
 
@@ -25,6 +26,7 @@ function App() {
             <Route path="/" element={<Index />} />
             <Route path="/greenvita" element={<GreenVita />} />
             <Route path="/soilxpert" element={<SoilXpert />} />
+            <Route path="/agriverse" element={<AgriVerse />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
