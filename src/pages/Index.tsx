@@ -7,6 +7,8 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import QuotesSection from '@/components/QuotesSection';
 import FaqSection from '@/components/FaqSection';
 import FeedbackForm from '@/components/FeedbackForm';
+import FeatureSection from '@/components/FeatureSection';
+import HomeFaqSection from '@/components/HomeFaqSection';
 
 const Index: React.FC = () => {
   const [language, setLanguage] = useState('en');
@@ -31,12 +33,14 @@ const Index: React.FC = () => {
       <div className="bg-[url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop')] bg-cover bg-center bg-fixed">
         <Hero language={language} />
       </div>
+      <FeatureSection language={language} />
       <div className="bg-[url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop')] bg-cover bg-center bg-fixed">
         <QuotesSection language={language} />
       </div>
       <div className="bg-[url('https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?auto=format&fit=crop')] bg-cover bg-center bg-fixed bg-opacity-70">
         <TestimonialsSection language={language} />
       </div>
+      <HomeFaqSection language={language} />
       <div className="bg-gradient-to-b from-agro-50 to-white">
         <FaqSection language={language} />
       </div>
