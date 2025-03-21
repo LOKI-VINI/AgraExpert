@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -40,8 +39,8 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
     { name: t.greenvita, href: '/greenvita', feature: true },
     { name: t.agriverse, href: '/agriverse', feature: true },
     { name: t.yieldmart, href: '/yieldmart', feature: true },
+    { name: t.agrigear, href: '/agrigear', feature: true },
     { name: t.skycast, href: '#skycast', feature: true },
-    { name: t.agrigear, href: '#agrigear', feature: true },
   ];
 
   return (

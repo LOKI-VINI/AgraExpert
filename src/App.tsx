@@ -9,6 +9,7 @@ import GreenVita from "./pages/GreenVita";
 import SoilXpert from "./pages/SoilXpert";
 import AgriVerse from "./pages/AgriVerse";
 import YieldMart from "./pages/YieldMart";
+import AgriGear from "./pages/AgriGear";
 import NotFound from "./pages/NotFound";
 import React from "react";
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/soilxpert" element={<SoilXpert />} />
             <Route path="/agriverse" element={<AgriVerse />} />
             <Route path="/yieldmart" element={<YieldMart />} />
+            <Route path="/agrigear" element={<AgriGear />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

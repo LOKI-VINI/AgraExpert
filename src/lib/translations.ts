@@ -1,4 +1,3 @@
-
 export const translations = {
   en: {
     welcome: "Welcome",
@@ -143,6 +142,30 @@ export const translations = {
     recentPriceUpdates: "Recent Price Updates",
     recentPriceUpdatesDescription: "Stay informed with the latest price changes from buyers.",
     
+    // AgriGear Page Translations
+    agrigearHeroTitle: "Empower Your Farming with Smart Equipment",
+    agrigearHeroDescription: "Access modern agricultural equipment training and rental services to boost your farm's efficiency and productivity.",
+    trainingLibraryTitle: "Equipment Training Library",
+    trainingLibraryDescription: "Watch video tutorials and learn how to use modern farming equipment effectively.",
+    searchVideoPlaceholder: "Search for equipment tutorials...",
+    filter: "Filter",
+    allEquipment: "All Equipment",
+    tractors: "Tractors",
+    plows: "Plows",
+    drones: "Drones",
+    harvesters: "Harvesters",
+    featured: "Featured",
+    equipmentRentalTitle: "Rent Equipment",
+    equipmentRentalDescription: "Browse available agricultural tools and machinery for rent to meet your farming needs.",
+    available: "Available",
+    rented: "Currently Rented",
+    viewDetails: "View Details",
+    hideDetails: "Hide Details",
+    requestRental: "Request Rental",
+    call: "Call",
+    rentRequestSubmitted: "Rental Request Submitted",
+    rentRequestFor: "Your rental request for",
+
     // Home FAQ Section
     homeFaqTitle: "Frequently Asked Questions",
     homeFaqDescription: "Common questions about AgroXpert and how our platform can help your farming business.",
@@ -403,8 +426,11 @@ export const translations = {
     buyerNamePlaceholder: "आपकी कंपनी या व्यक्तिगत नाम",
     productName: "उत्पाद का नाम",
     productNamePlaceholder: "जैसे, जैविक गेहूं, चावल, हल्दी",
+    pricePerUnit: "Price Per Unit (₹/kg)",
     pricePerUnitPlaceholder: "अपना प्रस्तावित मूल्य दर्ज करें",
+    quantity: "Quantity (kg)",
     quantityPlaceholder: "आप कितना खरीदना चाहते हैं",
+    contactEmail: "Contact Email",
     contactEmailPlaceholder: "आपका ईमेल पता",
     contactPhone: "संपर्क फोन",
     contactPhonePlaceholder: "आपका फोन नंबर",
@@ -423,6 +449,31 @@ export const translations = {
     noBuyersFound: "आपके खोज मानदंड से मेल खाने वाले कोई खरीदार नहीं मिले।",
     recentPriceUpdates: "हाल के मूल्य अपडेट",
     recentPriceUpdatesDescription: "खरीदारों से नवीनतम मूल्य परिवर्तनों के साथ सूचित रहें।",
+    
+    // AgriGear Hindi Translations
+    agrigearHeroTitle: "स्मार्ट उपकरणों के साथ अपनी खेती को सशक्त बनाएं",
+    agrigearHeroDescription: "अपने खेत की दक्षता और उत्पादकता बढ़ाने के लिए आधुनिक कृषि उपकरण प्रशिक्षण और किराया सेवाओं तक पहुंच प्राप्त करें।",
+    trainingLibraryTitle: "उपकरण प्रशिक्षण पुस्तकालय",
+    trainingLibraryDescription: "वीडियो ट्यूटोरियल देखें और आधुनिक खेती उपकरणों का प्रभावी ढंग से उपयोग करना सीखें।",
+    searchVideoPlaceholder: "उपकरण ट्यूटोरियल के लिए खोजें...",
+    filter: "फ़िल्टर",
+    allEquipment: "सभी उपकरण",
+    tractors: "ट्रैक्टर",
+    plows: "हल",
+    drones: "ड्रोन",
+    harvesters: "हार्वेस्टर",
+    featured: "विशेष",
+    equipmentRentalTitle: "उपकरण किराए पर लें",
+    equipmentRentalDescription: "अपनी खेती की जरूरतों को पूरा करने के लिए किराए पर उपलब्ध कृषि उपकरण और मशीनरी ब्राउज़ करें।",
+    available: "उपलब्ध",
+    rented: "वर्तमान में किराए पर",
+    viewDetails: "विवरण देखें",
+    hideDetails: "विवरण छिपाएं",
+    requestRental: "किराया अनुरोध",
+    rentRequestSubmitted: "किराया अनुरोध जमा किया गया",
+    rentRequestFor: "आपका किराया अनुरोध",
+    
+    // Home FAQ Section
     homeFaqTitle: "अक्सर पूछे जाने वाले प्रश्न",
     homeFaqDescription: "एग्रोएक्सपर्ट और हमारा प्लेटफॉर्म आपके कृषि व्यवसाय में कैसे मदद कर सकता है, इसके बारे में सामान्य प्रश्न।",
     faqQuestion1: "एग्रोएक्सपर्ट क्या है और यह किसानों की मदद कैसे करता है?",
@@ -437,4 +488,3 @@ export const translations = {
     faqAnswer5: "शुरू करना आसान है! बस एक खाता बनाएं, हमारी सुविधाओं का पता लगाएं, और अपनी वर्तमान कृषि जरूरतों के लिए सबसे प्रासंगिक उपकरणों के साथ शुरू करें। हमारा सहज इंटरफेस उपयोगकर्ता के अनुकूल होने के लिए डिज़ाइन किया गया है, यहां तक कि सीमित तकनीकी अनुभव वालों के लिए भी।"
   }
 };
-
