@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Menu, X, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -36,7 +35,7 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
 
   const navLinks = [
     { name: t.home, href: '/' },
-    { name: t.soilxpert, href: '#soilxpert', feature: true },
+    { name: t.soilxpert, href: '/soilxpert', feature: true },
     { name: t.greenvita, href: '/greenvita', feature: true },
     { name: t.skycast, href: '#skycast', feature: true },
     { name: t.agrigear, href: '#agrigear', feature: true },
@@ -60,7 +59,6 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
             <span className="text-agro-700 font-bold tracking-tight">AgroXpert</span>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:gap-x-6">
             {navLinks.map((link) => (
               <Link
@@ -83,7 +81,6 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
             </div>
           </div>
 
-          {/* Mobile Navigation Toggle */}
           <div className="flex items-center md:hidden">
             <LanguageSelector language={language} setLanguage={setLanguage} />
             <Avatar className="h-7 w-7 border border-agro-200 mr-2 cursor-pointer">
@@ -103,7 +100,6 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu */}
       <div
         className={`md:hidden transition-all duration-300 overflow-hidden ${
           isOpen ? "max-h-96 pb-4" : "max-h-0"
