@@ -5,7 +5,6 @@ import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import QuotesSection from '@/components/QuotesSection';
-import FaqSection from '@/components/FaqSection';
 import FeedbackForm from '@/components/FeedbackForm';
 import FeatureSection from '@/components/FeatureSection';
 import HomeFaqSection from '@/components/HomeFaqSection';
@@ -41,9 +40,6 @@ const Index: React.FC = () => {
         <TestimonialsSection language={language} />
       </div>
       <HomeFaqSection language={language} />
-      <div className="bg-gradient-to-b from-agro-50 to-white">
-        <FaqSection language={language} />
-      </div>
       <div className="bg-gradient-to-b from-white to-agro-50">
         <FeedbackForm language={language} />
       </div>
