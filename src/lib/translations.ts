@@ -134,11 +134,7 @@ export const translations = {
     searchBuyersPlaceholder: "Search by product or buyer name",
     productDetails: "Product Details",
     contactOptions: "Contact Options",
-    available: "available",
-    call: "Call",
-    // email key already defined above
     noBuyersFound: "No buyers found matching your search criteria.",
-    
     recentPriceUpdates: "Recent Price Updates",
     recentPriceUpdatesDescription: "Stay informed with the latest price changes from buyers.",
     
@@ -157,12 +153,10 @@ export const translations = {
     featured: "Featured",
     equipmentRentalTitle: "Rent Equipment",
     equipmentRentalDescription: "Browse available agricultural tools and machinery for rent to meet your farming needs.",
-    available: "Available",
     rented: "Currently Rented",
     viewDetails: "View Details",
     hideDetails: "Hide Details",
     requestRental: "Request Rental",
-    call: "Call",
     rentRequestSubmitted: "Rental Request Submitted",
     rentRequestFor: "Your rental request for",
 
@@ -444,8 +438,6 @@ export const translations = {
     searchBuyersPlaceholder: "उत्पाद या खरीदार के नाम से खोजें",
     productDetails: "उत्पाद विवरण",
     contactOptions: "संपर्क विकल्प",
-    available: "उपलब्ध",
-    call: "कॉल",
     noBuyersFound: "आपके खोज मानदंड से मेल खाने वाले कोई खरीदार नहीं मिले।",
     recentPriceUpdates: "हाल के मूल्य अपडेट",
     recentPriceUpdatesDescription: "खरीदारों से नवीनतम मूल्य परिवर्तनों के साथ सूचित रहें।",
@@ -470,6 +462,7 @@ export const translations = {
     viewDetails: "विवरण देखें",
     hideDetails: "विवरण छिपाएं",
     requestRental: "किराया अनुरोध",
+    call: "कॉल",
     rentRequestSubmitted: "किराया अनुरोध जमा किया गया",
     rentRequestFor: "आपका किराया अनुरोध",
     
