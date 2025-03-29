@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
-import NavBar from '@/components/NavBar';
-import Footer from '@/components/Footer';
+import PageLayout from '@/components/PageLayout';
 import ImageUploader from '@/components/ImageUploader';
 import DiseaseDetectionResults from '@/components/DiseaseDetectionResults';
 import { translations } from '@/lib/translations';
@@ -85,89 +84,89 @@ const GreenVita: React.FC = () => {
     setDetectionResult(null);
     setError(null);
   };
+
+  const heroSection = (
+    <section className="relative pt-32 pb-12 bg-[url('https://images.unsplash.com/photo-1501014834244-3b17ba7a97cd?auto=format&fit=crop&q=80')] bg-cover bg-center">
+      <div className="absolute inset-0 bg-green-800/40 backdrop-blur-sm"></div>
+      <div className="container relative mx-auto px-4 z-10">
+        <div className="flex items-center gap-3 mb-2">
+          <Leaf className="h-8 w-8 text-green-400" />
+          <div className="text-sm text-green-200">
+            <a href="/" className="hover:underline">Home</a>
+            <span className="mx-2">/</span>
+            <span className="text-white font-medium">GreenVita</span>
+          </div>
+        </div>
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in">
+          GreenVita
+        </h1>
+        <p className="text-xl md:text-2xl text-green-100 max-w-3xl mb-6 animate-fade-in">
+          {t.greenvitaDescription || "AI-Powered Plant Disease Detection & Care"}
+        </p>
+        <p className="text-md text-green-200 max-w-2xl mb-10 animate-fade-in">
+          {t.greenvitaTagline || "Upload images of your plants to identify diseases, get treatment recommendations, and protect your crops."}
+        </p>
+      </div>
+    </section>
+  );
   
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-green-50 to-white">
-      <NavBar language={language} setLanguage={setLanguage} />
-      
-      {/* Hero Section */}
-      <section className="relative pt-32 pb-12 bg-[url('https://images.unsplash.com/photo-1501014834244-3b17ba7a97cd?auto=format&fit=crop&q=80')] bg-cover bg-center">
-        <div className="absolute inset-0 bg-green-800/40 backdrop-blur-sm"></div>
-        <div className="container relative mx-auto px-4 z-10">
-          <div className="flex items-center gap-3 mb-2">
-            <Leaf className="h-8 w-8 text-green-400" />
-            <div className="text-sm text-green-200">
-              <a href="/" className="hover:underline">Home</a>
-              <span className="mx-2">/</span>
-              <span className="text-white font-medium">GreenVita</span>
-            </div>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in">
-            GreenVita
-          </h1>
-          <p className="text-xl md:text-2xl text-green-100 max-w-3xl mb-6 animate-fade-in">
-            {t.greenvitaDescription || "AI-Powered Plant Disease Detection & Care"}
-          </p>
-          <p className="text-md text-green-200 max-w-2xl mb-10 animate-fade-in">
-            {t.greenvitaTagline || "Upload images of your plants to identify diseases, get treatment recommendations, and protect your crops."}
-          </p>
-        </div>
-      </section>
-      
-      <main className="flex-1 container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Upload Section */}
-          <section className="bg-white rounded-xl shadow-md p-6 md:p-8 animate-fade-in">
-            <h2 className="text-2xl font-semibold text-green-800 mb-4 flex items-center gap-2">
-              <Leaf className="h-5 w-5" />
-              {t.uploadImage || "Upload Plant Image"}
-            </h2>
-            <ImageUploader 
-              onImageUpload={handleImageUpload} 
-              uploadedImage={uploadedImage}
-              language={language}
-              isProcessing={isProcessing}
-            />
-            
-            {uploadedImage && !isProcessing && !detectionResult && (
-              <Button 
-                onClick={detectDisease} 
-                className="w-full mt-6 bg-green-600 hover:bg-green-700"
-              >
-                {t.detectDisease || "Detect Disease"} <ChevronRight className="h-4 w-4 ml-1" />
-              </Button>
-            )}
-            
-            {uploadedImage && detectionResult && (
-              <Button 
-                variant="outline" 
-                onClick={resetDetection} 
-                className="w-full mt-6 border-green-600 text-green-700 hover:bg-green-50"
-              >
-                {t.newDetection || "Start New Detection"}
-              </Button>
-            )}
-          </section>
+    <PageLayout 
+      language={language} 
+      setLanguage={setLanguage}
+      heroSection={heroSection}
+      className="bg-gradient-to-b from-green-50 to-white"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Upload Section */}
+        <section className="bg-white rounded-xl shadow-md p-6 md:p-8 animate-fade-in">
+          <h2 className="text-2xl font-semibold text-green-800 mb-4 flex items-center gap-2">
+            <Leaf className="h-5 w-5" />
+            {t.uploadImage || "Upload Plant Image"}
+          </h2>
+          <ImageUploader 
+            onImageUpload={handleImageUpload} 
+            uploadedImage={uploadedImage}
+            language={language}
+            isProcessing={isProcessing}
+          />
           
-          {/* Results Section */}
-          <section className="bg-white rounded-xl shadow-md p-6 md:p-8 animate-fade-in">
-            <h2 className="text-2xl font-semibold text-green-800 mb-4 flex items-center gap-2">
-              <Leaf className="h-5 w-5" />
-              {t.detectionResults || "Detection Results"}
-            </h2>
-            
-            <DiseaseDetectionResults
-              isProcessing={isProcessing}
-              result={detectionResult}
-              error={error}
-              language={language}
-            />
-          </section>
-        </div>
-      </main>
-      
-      <Footer language={language} />
-    </div>
+          {uploadedImage && !isProcessing && !detectionResult && (
+            <Button 
+              onClick={detectDisease} 
+              className="w-full mt-6 bg-green-600 hover:bg-green-700"
+            >
+              {t.detectDisease || "Detect Disease"} <ChevronRight className="h-4 w-4 ml-1" />
+            </Button>
+          )}
+          
+          {uploadedImage && detectionResult && (
+            <Button 
+              variant="outline" 
+              onClick={resetDetection} 
+              className="w-full mt-6 border-green-600 text-green-700 hover:bg-green-50"
+            >
+              {t.newDetection || "Start New Detection"}
+            </Button>
+          )}
+        </section>
+        
+        {/* Results Section */}
+        <section className="bg-white rounded-xl shadow-md p-6 md:p-8 animate-fade-in">
+          <h2 className="text-2xl font-semibold text-green-800 mb-4 flex items-center gap-2">
+            <Leaf className="h-5 w-5" />
+            {t.detectionResults || "Detection Results"}
+          </h2>
+          
+          <DiseaseDetectionResults
+            isProcessing={isProcessing}
+            result={detectionResult}
+            error={error}
+            language={language}
+          />
+        </section>
+      </div>
+    </PageLayout>
   );
 };
 
