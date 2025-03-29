@@ -36,18 +36,18 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
 
   const navLinks = [
     { name: t.home, href: '/' },
-    { name: t.soilxpert, href: '/soilxpert', feature: true },
-    { name: t.greenvita, href: '/greenvita', feature: true },
-    { name: t.agriverse, href: '/agriverse', feature: true },
-    { name: t.yieldmart, href: '/yieldmart', feature: true },
-    { name: t.agrigear, href: '/agrigear', feature: true },
-    { name: t.skycast, href: '/skycast', feature: true },
+    { name: t.soilxpert, href: '/soilxpert' },
+    { name: t.greenvita, href: '/greenvita' },
+    { name: t.agriverse, href: '/agriverse' },
+    { name: t.yieldmart, href: '/yieldmart' },
+    { name: t.agrigear, href: '/agrigear' },
+    { name: t.skycast, href: '/skycast' },
   ];
 
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'glass-nav py-2' : 'bg-transparent py-4'
+        scrolled ? 'glass-nav py-2 shadow-md' : 'bg-transparent py-4'
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,15 +64,15 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
             {navLinks.map((link) => (
               <Link
                 key={link.name}
-                to={link.href.startsWith('#') ? `/${link.href}` : link.href}
+                to={link.href}
                 className={`text-sm font-medium transition-colors nav-link ${
-                  link.feature ? 'text-agro-700 hover:text-agro-800' : 'text-foreground/80 hover:text-primary'
-                } ${location.pathname === link.href ? 'font-semibold' : ''}`}
+                  location.pathname === link.href ? 'text-agro-700 font-semibold' : 'text-foreground/80 hover:text-agro-600'
+                }`}
               >
                 {link.name}
               </Link>
             ))}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 ml-2">
               <LanguageSelector language={language} setLanguage={setLanguage} />
               <Avatar className="h-8 w-8 border border-agro-200 cursor-pointer hover:ring-2 hover:ring-agro-300 transition-all">
                 <AvatarFallback className="bg-agro-100 text-agro-700">
@@ -110,10 +110,10 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
           {navLinks.map((link) => (
             <Link
               key={link.name}
-              to={link.href.startsWith('#') ? `/${link.href}` : link.href}
-              className={`block px-3 py-2 text-base font-medium rounded-md hover:bg-secondary/50 transition-colors ${
-                link.feature ? 'text-agro-700 hover:text-agro-800' : 'text-foreground/80 hover:text-primary'
-              } ${location.pathname === link.href ? 'font-semibold' : ''}`}
+              to={link.href}
+              className={`block px-3 py-2 text-base font-medium rounded-md hover:bg-agro-50 transition-colors ${
+                location.pathname === link.href ? 'text-agro-700 bg-agro-50/50' : 'text-foreground/80'
+              }`}
               onClick={closeMenu}
             >
               {link.name}

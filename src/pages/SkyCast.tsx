@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import NavBar from '@/components/NavBar';
-import Footer from '@/components/Footer';
+import PageLayout from '@/components/PageLayout';
 import SkyCastHero from '@/components/SkyCast/SkyCastHero';
 import WeatherDisplay from '@/components/SkyCast/WeatherDisplay';
 import WeatherSearch from '@/components/SkyCast/WeatherSearch';
@@ -37,36 +36,30 @@ const SkyCast: React.FC = () => {
   };
   
   return (
-    <div className="flex flex-col min-h-screen">
-      <NavBar language={language} setLanguage={setLanguage} />
-      
-      <main className="flex-grow">
-        <SkyCastHero language={language} />
+    <PageLayout 
+      language={language} 
+      setLanguage={setLanguage}
+      heroSection={<SkyCastHero language={language} />}
+    >
+      <div className="space-y-12">
+        <WeatherSearch 
+          language={language} 
+          onSearch={handleLocationSearch} 
+          isLoading={isLoading}
+        />
         
-        <div className="container mx-auto px-4 py-12">
-          <div className="space-y-12">
-            <WeatherSearch 
-              language={language} 
-              onSearch={handleLocationSearch} 
-              isLoading={isLoading}
-            />
-            
-            <WeatherDisplay 
-              language={language} 
-              location={location} 
-              isLoading={isLoading} 
-            />
-            
-            <WeatherAlerts 
-              language={language} 
-              location={location} 
-            />
-          </div>
-        </div>
-      </main>
-      
-      <Footer language={language} />
-    </div>
+        <WeatherDisplay 
+          language={language} 
+          location={location} 
+          isLoading={isLoading} 
+        />
+        
+        <WeatherAlerts 
+          language={language} 
+          location={location} 
+        />
+      </div>
+    </PageLayout>
   );
 };
 
