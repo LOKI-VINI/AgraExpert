@@ -16,7 +16,9 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const t = translations[language];
+  
+  // Make sure we have a valid translation object by defaulting to 'en' if the requested language isn't available
+  const t = translations[language] || translations['en'];
 
   useEffect(() => {
     const handleScroll = () => {
