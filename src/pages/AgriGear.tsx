@@ -1,12 +1,16 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import AgriGearHero from '@/components/AgriGear/AgriGearHero';
 import TrainingLibrary from '@/components/AgriGear/TrainingLibrary';
 import EquipmentRental from '@/components/AgriGear/EquipmentRental';
 
 const AgriGear: React.FC = () => {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('kn'); // Setting Kannada as default
+  
+  useEffect(() => {
+    // If you need to do any language-specific initializations
+  }, [language]);
   
   return (
     <PageLayout 

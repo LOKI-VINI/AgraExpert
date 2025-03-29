@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import NavBar from '@/components/NavBar';
 import Footer from '@/components/Footer';
 
@@ -18,6 +18,13 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   heroSection,
   className = "" 
 }) => {
+  // Set Kannada as preferred language if not already set
+  useEffect(() => {
+    if (language === 'en') {
+      setLanguage('kn');
+    }
+  }, []);
+  
   return (
     <div className="flex flex-col min-h-screen">
       <NavBar language={language} setLanguage={setLanguage} />

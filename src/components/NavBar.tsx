@@ -36,14 +36,15 @@ const NavBar: React.FC<NavBarProps> = ({ language, setLanguage }) => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
+  // Make sure we have the navigation links defined even if some translations are missing
   const navLinks = [
-    { name: t.home, href: '/' },
-    { name: t.soilxpert, href: '/soilxpert' },
-    { name: t.greenvita, href: '/greenvita' },
-    { name: t.agriverse, href: '/agriverse' },
-    { name: t.yieldmart, href: '/yieldmart' },
-    { name: t.agrigear, href: '/agrigear' },
-    { name: t.skycast, href: '/skycast' },
+    { name: t.home || 'Home', href: '/' },
+    { name: t.soilxpert || 'SoilXpert', href: '/soilxpert' },
+    { name: t.greenvita || 'GreenVita', href: '/greenvita' },
+    { name: t.agriverse || 'AgriVerse', href: '/agriverse' },
+    { name: t.yieldmart || 'YieldMart', href: '/yieldmart' },
+    { name: t.agrigear || 'AgriGear', href: '/agrigear' },
+    { name: t.skycast || 'SkyCast', href: '/skycast' },
   ];
 
   return (

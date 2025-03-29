@@ -8,7 +8,8 @@ interface TestimonialsSectionProps {
 }
 
 const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ language }) => {
-  const t = translations[language];
+  // Make sure we have a valid translation object by defaulting to 'en' if the requested language isn't available
+  const t = translations[language] || translations['en'];
   
   const testimonials = [
     {
@@ -44,9 +45,9 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ language }) =
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.testimonials || 'Success Stories'}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.testimonialsSectionTitle || 'Success Stories'}</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t.testimonialsSubtitle || 'Hear from farmers who have transformed their agricultural practices with AgroXpert'}
+            {t.testimonialsSectionDescription || 'Discover how farmers are achieving better yields and sustainability with our platform.'}
           </p>
         </div>
         
