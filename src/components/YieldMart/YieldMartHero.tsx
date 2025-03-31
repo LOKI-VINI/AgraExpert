@@ -7,7 +7,12 @@ interface YieldMartHeroProps {
 }
 
 const YieldMartHero: React.FC<YieldMartHeroProps> = ({ language }) => {
-  const t = translations[language];
+  // Make sure we have a valid translation, defaulting to English if necessary
+  const t = translations[language] || translations['en'] || {};
+  
+  // Fallback texts
+  const fallbackTitle = "Connect with Verified Buyers – Maximize Your Yield Profits";
+  const fallbackDescription = "Access a transparent marketplace where buyers register their prices for agricultural products, enabling direct connections and better profits.";
   
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">
@@ -21,11 +26,11 @@ const YieldMartHero: React.FC<YieldMartHeroProps> = ({ language }) => {
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4 animate-slide-up" style={{ animationDelay: '200ms' }}>
-            {t.yieldmartHeroTitle}
+            {t.yieldmartHeroTitle || fallbackTitle}
           </h1>
           
           <p className="text-lg text-gray-600 mb-8 animate-slide-up" style={{ animationDelay: '300ms' }}>
-            {t.yieldmartHeroDescription}
+            {t.yieldmartHeroDescription || fallbackDescription}
           </p>
         </div>
       </div>

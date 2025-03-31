@@ -9,7 +9,8 @@ import FeatureSection from '@/components/FeatureSection';
 import HomeFaqSection from '@/components/HomeFaqSection';
 
 const Index: React.FC = () => {
-  const [language, setLanguage] = useState('kn'); // Setting Kannada as default
+  // Set Kannada as default language
+  const [language, setLanguage] = useState('kn');
   const [loaded, setLoaded] = useState(false);
   
   useEffect(() => {

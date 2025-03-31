@@ -7,7 +7,15 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ language }) => {
-  const t = translations[language];
+  // Make sure we have a valid translation, defaulting to English if necessary
+  const t = translations[language] || translations['en'] || {};
+  
+  // Define fallback texts if translations are not available
+  const fallbackTexts = {
+    heroTitle: "Farming's Digital Revolution",
+    heroTagline: "Smart Solutions for Modern Agriculture",
+    heroDescription: "Leverage advanced technology to optimize your farming operations, increase yields, and achieve sustainable growth."
+  };
   
   return (
     <section className="hero-section pt-32 pb-16 md:pt-40 md:pb-24 min-h-screen flex items-center relative overflow-hidden">
@@ -21,15 +29,15 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight tracking-tight animate-slide-up" style={{ animationDelay: '300ms' }}>
-            {t.heroTitle}
+            {t.heroTitle || fallbackTexts.heroTitle}
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground font-medium animate-slide-up" style={{ animationDelay: '400ms' }}>
-            {t.heroTagline}
+            {t.heroTagline || fallbackTexts.heroTagline}
           </p>
           
           <p className="max-w-2xl mx-auto text-base md:text-lg text-foreground/80 animate-slide-up" style={{ animationDelay: '500ms' }}>
-            {t.heroDescription}
+            {t.heroDescription || fallbackTexts.heroDescription}
           </p>
           
           <div className="pt-16 mt-8">

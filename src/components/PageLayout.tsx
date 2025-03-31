@@ -18,16 +18,17 @@ const PageLayout: React.FC<PageLayoutProps> = ({
   heroSection,
   className = "" 
 }) => {
-  // Set Kannada as preferred language if not already set
+  // Set Kannada as default language
   useEffect(() => {
-    if (language === 'en') {
+    // Only set language if not already set to a valid value
+    if (!language || language === 'en') {
       setLanguage('kn');
     }
-  }, [language, setLanguage]); // Add proper dependencies
+  }, [language, setLanguage]);
   
   return (
     <div className="flex flex-col min-h-screen">
-      <NavBar language={language} setLanguage={setLanguage} />
+      <NavBar language={language || 'kn'} setLanguage={setLanguage} />
       
       <main className={`flex-grow ${className}`}>
         {heroSection}
@@ -36,7 +37,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
         </div>
       </main>
       
-      <Footer language={language} />
+      <Footer language={language || 'kn'} />
     </div>
   );
 };

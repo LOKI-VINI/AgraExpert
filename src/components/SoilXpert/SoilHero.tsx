@@ -9,7 +9,16 @@ interface SoilHeroProps {
 }
 
 const SoilHero: React.FC<SoilHeroProps> = ({ language }) => {
-  const t = translations[language];
+  // Make sure we have a valid translation, defaulting to English if necessary
+  const t = translations[language] || translations['en'] || {};
+
+  // Fallback text
+  const fallbackTexts = {
+    soilxpertHeroTitle: "Unlock Your Soil's Potential with AI Insights",
+    soilxpertHeroDescription: "Advanced soil testing, personalized crop recommendations, and yield prediction using AI-driven analysis.",
+    getStarted: "Get Started",
+    learnMore: "Learn More"
+  };
 
   return (
     <div className="relative py-16 sm:py-24 overflow-hidden bg-gradient-to-r from-green-600 to-green-800">
@@ -32,17 +41,17 @@ const SoilHero: React.FC<SoilHeroProps> = ({ language }) => {
               <span>SoilXpert</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white leading-tight">
-              {t.soilxpertHeroTitle || "Unlock Your Soil's Potential with AI Insights"}
+              {t.soilxpertHeroTitle || fallbackTexts.soilxpertHeroTitle}
             </h1>
             <p className="text-lg md:text-xl text-white/80 mb-8 max-w-xl">
-              {t.soilxpertHeroDescription || "Advanced soil testing, personalized crop recommendations, and yield prediction using AI-driven analysis."}
+              {t.soilxpertHeroDescription || fallbackTexts.soilxpertHeroDescription}
             </p>
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
               <Button size="lg" className="bg-white text-green-800 hover:bg-white/90">
-                {t.getStarted || "Get Started"}
+                {t.getStarted || fallbackTexts.getStarted}
               </Button>
               <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10">
-                {t.learnMore || "Learn More"}
+                {t.learnMore || fallbackTexts.learnMore}
               </Button>
             </div>
           </div>

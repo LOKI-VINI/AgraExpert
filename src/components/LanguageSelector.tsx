@@ -19,19 +19,22 @@ interface LanguageSelectorProps {
 }
 
 const LanguageSelector: React.FC<LanguageSelectorProps> = ({ language, setLanguage }) => {
-  // Make sure we have a valid translation object by defaulting to 'en' if the requested language isn't available
-  const t = translations[language] || translations['en'];
+  // Always ensure we have a valid language by defaulting to 'kn' or 'en' if needed
+  const safeLanguage = language || 'kn';
   
-  // Default language labels if translations are missing
+  // Make sure we have a valid translation object by defaulting to 'en' if the requested language isn't available
+  const t = translations[safeLanguage] || translations['en'] || {};
+  
+  // Default language labels as fallbacks
   const languageLabels = {
-    language: t?.language || "Language",
-    english: t?.english || "English",
-    hindi: t?.hindi || "Hindi",
-    tamil: t?.tamil || "Tamil",
-    telugu: t?.telugu || "Telugu",
-    bengali: t?.bengali || "Bengali",
-    marathi: t?.marathi || "Marathi",
-    kannada: t?.kannada || "Kannada"
+    language: t.language || "Language",
+    english: t.english || "English",
+    hindi: t.hindi || "Hindi",
+    tamil: t.tamil || "Tamil",
+    telugu: t.telugu || "Telugu",
+    bengali: t.bengali || "Bengali",
+    marathi: t.marathi || "Marathi",
+    kannada: t.kannada || "Kannada"
   };
 
   return (
@@ -50,49 +53,49 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ language, setLangua
             onClick={() => setLanguage('en')}
           >
             {languageLabels.english}
-            {language === 'en' && <Check className="h-4 w-4" />}
+            {safeLanguage === 'en' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
           <DropdownMenuItem 
             className="flex items-center justify-between cursor-pointer" 
             onClick={() => setLanguage('hi')}
           >
             {languageLabels.hindi}
-            {language === 'hi' && <Check className="h-4 w-4" />}
+            {safeLanguage === 'hi' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
           <DropdownMenuItem 
             className="flex items-center justify-between cursor-pointer" 
             onClick={() => setLanguage('ta')}
           >
             {languageLabels.tamil}
-            {language === 'ta' && <Check className="h-4 w-4" />}
+            {safeLanguage === 'ta' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
           <DropdownMenuItem 
             className="flex items-center justify-between cursor-pointer" 
             onClick={() => setLanguage('te')}
           >
             {languageLabels.telugu}
-            {language === 'te' && <Check className="h-4 w-4" />}
+            {safeLanguage === 'te' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
           <DropdownMenuItem 
             className="flex items-center justify-between cursor-pointer" 
             onClick={() => setLanguage('bn')}
           >
             {languageLabels.bengali}
-            {language === 'bn' && <Check className="h-4 w-4" />}
+            {safeLanguage === 'bn' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
           <DropdownMenuItem 
             className="flex items-center justify-between cursor-pointer" 
             onClick={() => setLanguage('mr')}
           >
             {languageLabels.marathi}
-            {language === 'mr' && <Check className="h-4 w-4" />}
+            {safeLanguage === 'mr' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
           <DropdownMenuItem 
             className="flex items-center justify-between cursor-pointer" 
             onClick={() => setLanguage('kn')}
           >
             {languageLabels.kannada}
-            {language === 'kn' && <Check className="h-4 w-4" />}
+            {safeLanguage === 'kn' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
