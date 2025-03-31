@@ -9,48 +9,68 @@ interface FeatureSectionProps {
 }
 
 const FeatureSection: React.FC<FeatureSectionProps> = ({ language }) => {
-  const t = translations[language];
+  // Ensure we have a valid language code
+  const safeLanguage = language || 'kn';
+  
+  // Make sure we have a valid translation object by defaulting to 'en' if the requested language isn't available
+  const t = translations[safeLanguage] || translations['en'] || {};
+  
+  // Default feature text as fallbacks
+  const defaultFeatures = {
+    soilxpertTitle: "SoilXpert",
+    soilxpertDescription: "AI-powered soil testing and crop recommendations tailored to your farm's unique conditions.",
+    greenvitaTitle: "GreenVita",
+    greenvitaDescription: "Monitor plant health and detect diseases early with our advanced image processing technology.",
+    skycastTitle: "SkyCast",
+    skycastDescription: "Hyperlocal weather forecasts and alerts customized for agricultural decision-making.",
+    agrigearTitle: "AgriGear",
+    agrigearDescription: "Smart equipment management and IoT solutions for precision agriculture.",
+    yieldmartTitle: "YieldMart",
+    yieldmartDescription: "Connect directly with buyers and get the best prices for your agricultural produce.",
+    agriverseTitle: "AgriVerse",
+    agriverseDescription: "Join our farming community to share knowledge, experiences, and build connections."
+  };
   
   const features = [
     {
       id: 'soilxpert',
-      title: t.soilxpertTitle,
-      description: t.soilxpertDescription,
+      title: t.soilxpertTitle || defaultFeatures.soilxpertTitle,
+      description: t.soilxpertDescription || defaultFeatures.soilxpertDescription,
       icon: <Leaf className="h-6 w-6 text-agro-700" />,
       delay: 100
     },
     {
       id: 'greenvita',
-      title: t.greenvitaTitle,
-      description: t.greenvitaDescription,
+      title: t.greenvitaTitle || defaultFeatures.greenvitaTitle,
+      description: t.greenvitaDescription || defaultFeatures.greenvitaDescription,
       icon: <Heart className="h-6 w-6 text-agro-700" />,
       delay: 200
     },
     {
       id: 'skycast',
-      title: t.skycastTitle,
-      description: t.skycastDescription,
+      title: t.skycastTitle || defaultFeatures.skycastTitle,
+      description: t.skycastDescription || defaultFeatures.skycastDescription,
       icon: <CloudSun className="h-6 w-6 text-agro-700" />,
       delay: 300
     },
     {
       id: 'agrigear',
-      title: t.agrigearTitle,
-      description: t.agrigearDescription,
+      title: t.agrigearTitle || defaultFeatures.agrigearTitle,
+      description: t.agrigearDescription || defaultFeatures.agrigearDescription,
       icon: <Cog className="h-6 w-6 text-agro-700" />,
       delay: 400
     },
     {
       id: 'yieldmart',
-      title: t.yieldmartTitle,
-      description: t.yieldmartDescription,
+      title: t.yieldmartTitle || defaultFeatures.yieldmartTitle,
+      description: t.yieldmartDescription || defaultFeatures.yieldmartDescription,
       icon: <ShoppingCart className="h-6 w-6 text-agro-700" />,
       delay: 500
     },
     {
       id: 'agriverse',
-      title: t.agriverseTitle,
-      description: t.agriverseDescription,
+      title: t.agriverseTitle || defaultFeatures.agriverseTitle,
+      description: t.agriverseDescription || defaultFeatures.agriverseDescription,
       icon: <MessageSquare className="h-6 w-6 text-agro-700" />,
       delay: 600
     }
@@ -67,7 +87,7 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({ language }) => {
               title={feature.title}
               description={feature.description}
               icon={feature.icon}
-              language={language}
+              language={safeLanguage}
               delay={feature.delay}
             />
           ))}
