@@ -24,6 +24,8 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     if (!language || language === '') {
       setLanguage('kn');
     }
+    // Scroll to top on page load
+    window.scrollTo(0, 0);
   }, [language, setLanguage]);
   
   // Ensure we always have a valid language value
@@ -33,7 +35,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     <div className="flex flex-col min-h-screen">
       <NavBar language={safeLanguage} setLanguage={setLanguage} />
       
-      <main className={`flex-grow ${className}`}>
+      <main className={`flex-grow pt-16 ${className}`}>
         {heroSection}
         <div className="container mx-auto px-4 py-12">
           {children}

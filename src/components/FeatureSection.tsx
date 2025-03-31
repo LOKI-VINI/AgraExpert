@@ -79,6 +79,15 @@ const FeatureSection: React.FC<FeatureSectionProps> = ({ language }) => {
   return (
     <section className="py-16 md:py-24 bg-gradient-to-b from-white to-agro-50">
       <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+            {t.featuresTitle || "Our Features"}
+          </h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            {t.featuresDescription || "Explore our suite of agricultural technology solutions designed to optimize your farming operations."}
+          </p>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {features.map((feature) => (
             <FeatureCard

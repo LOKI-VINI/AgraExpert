@@ -17,16 +17,19 @@ const Index: React.FC = () => {
     // Simulate loading delay for animation purposes
     const timer = setTimeout(() => {
       setLoaded(true);
-    }, 100);
+    }, 500);
     
     return () => clearTimeout(timer);
   }, []);
   
-  // Add a simple loading indicator
+  // Add a loading indicator with a subtle fade-in effect
   if (!loaded) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-agro-700"></div>
+        <div className="flex flex-col items-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-agro-700"></div>
+          <p className="mt-4 text-agro-700 animate-pulse">Loading AgroXpert...</p>
+        </div>
       </div>
     );
   }

@@ -42,7 +42,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   return (
     <div 
       id={id}
-      className="feature-card bg-white rounded-xl shadow-sm p-6 flex flex-col"
+      className="feature-card bg-white rounded-xl shadow-sm p-6 flex flex-col h-full"
       style={{ 
         animationDelay: `${delay}ms`,
         opacity: 0,
@@ -54,8 +54,8 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       </div>
       <h3 className="text-xl font-semibold mb-2 text-gray-800">{title}</h3>
       <p className="text-gray-600 mb-6 flex-grow">{description}</p>
-      <Link to={linkPath}>
-        <Button variant="outline" className="w-full border-agro-200 text-agro-700 hover:bg-agro-50">
+      <Link to={linkPath} className="mt-auto">
+        <Button variant="outline" className="w-full border-agro-200 text-agro-700 hover:bg-agro-50 transition-all">
           {exploreFeatureText} <ChevronRight className="h-4 w-4 ml-1" />
         </Button>
       </Link>

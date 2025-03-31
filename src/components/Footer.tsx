@@ -2,6 +2,7 @@
 import React from 'react';
 import { Twitter, Facebook, Instagram, Github, Mail, PhoneCall, MapPin } from 'lucide-react';
 import { translations } from '@/lib/translations';
+import { Link } from 'react-router-dom';
 
 interface FooterProps {
   language: string;
@@ -25,11 +26,24 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
     usefulLinks: "Useful Links",
     privacyPolicy: "Privacy Policy",
     termsOfService: "Terms of Service",
-    address: "123 AgriTech Lane, Farmville, USA",
-    phone: "+1 (555) 123-4567",
-    emailAddress: "info@agrosurfing.com",
+    address: "123 AgriTech Lane, Farmville, India",
+    phone: "+91 9876543210",
+    emailAddress: "info@agroxpert.com",
     allRightsReserved: "© 2024 AgroXpert. All Rights Reserved.",
     followUs: "Follow Us"
+  };
+
+  const footerLinks = {
+    company: [
+      { name: t.aboutUs || defaultFooter.aboutUs, href: "#about-us" },
+      { name: t.services || defaultFooter.services, href: "#services" },
+      { name: t.blog || defaultFooter.blog, href: "#blog" },
+      { name: t.contactUs || defaultFooter.contactUs, href: "#contact" },
+    ],
+    useful: [
+      { name: t.privacyPolicy || defaultFooter.privacyPolicy, href: "#privacy" },
+      { name: t.termsOfService || defaultFooter.termsOfService, href: "#terms" },
+    ]
   };
   
   return (
@@ -62,26 +76,13 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
               {t.company || defaultFooter.company}
             </h3>
             <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-agro-300 transition-colors">
-                  {t.aboutUs || defaultFooter.aboutUs}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-agro-300 transition-colors">
-                  {t.services || defaultFooter.services}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-agro-300 transition-colors">
-                  {t.blog || defaultFooter.blog}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-agro-300 transition-colors">
-                  {t.contactUs || defaultFooter.contactUs}
-                </a>
-              </li>
+              {footerLinks.company.map((link, index) => (
+                <li key={index}>
+                  <Link to={link.href} className="text-gray-400 hover:text-agro-300 transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           
@@ -90,16 +91,13 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
               {t.usefulLinks || defaultFooter.usefulLinks}
             </h3>
             <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-agro-300 transition-colors">
-                  {t.privacyPolicy || defaultFooter.privacyPolicy}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-agro-300 transition-colors">
-                  {t.termsOfService || defaultFooter.termsOfService}
-                </a>
-              </li>
+              {footerLinks.useful.map((link, index) => (
+                <li key={index}>
+                  <Link to={link.href} className="text-gray-400 hover:text-agro-300 transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           
@@ -109,19 +107,19 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start">
-                <MapPin className="mr-2 h-5 w-5 text-agro-300 mt-0.5" />
+                <MapPin className="mr-2 h-5 w-5 text-agro-300 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-400">
                   {t.address || defaultFooter.address}
                 </span>
               </li>
               <li className="flex items-center">
-                <PhoneCall className="mr-2 h-5 w-5 text-agro-300" />
+                <PhoneCall className="mr-2 h-5 w-5 text-agro-300 flex-shrink-0" />
                 <span className="text-gray-400">
                   {t.phone || defaultFooter.phone}
                 </span>
               </li>
               <li className="flex items-center">
-                <Mail className="mr-2 h-5 w-5 text-agro-300" />
+                <Mail className="mr-2 h-5 w-5 text-agro-300 flex-shrink-0" />
                 <span className="text-gray-400">
                   {t.emailAddress || defaultFooter.emailAddress}
                 </span>
