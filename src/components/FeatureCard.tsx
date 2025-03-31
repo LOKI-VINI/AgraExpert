@@ -22,7 +22,14 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   language,
   delay 
 }) => {
-  const t = translations[language];
+  // Ensure we have a valid language code
+  const safeLanguage = language || 'kn';
+  
+  // Make sure we have a valid translation object by defaulting to 'en' if the requested language isn't available
+  const t = translations[safeLanguage] || translations['en'] || {};
+  
+  // Default button text as fallback
+  const exploreFeatureText = t.exploreFeature || "Explore Feature";
   
   // For GreenVita, use a direct route; for others, use hash links
   const linkPath = id === 'greenvita' ? '/greenvita' : `#${id}`;
@@ -44,7 +51,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
       <p className="text-gray-600 mb-6 flex-grow">{description}</p>
       <Link to={linkPath}>
         <Button variant="outline" className="w-full border-agro-200 text-agro-700 hover:bg-agro-50">
-          {t.exploreFeature} <ChevronRight className="h-4 w-4 ml-1" />
+          {exploreFeatureText} <ChevronRight className="h-4 w-4 ml-1" />
         </Button>
       </Link>
     </div>
