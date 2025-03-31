@@ -32,7 +32,12 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   const exploreFeatureText = t.exploreFeature || "Explore Feature";
   
   // For GreenVita, use a direct route; for others, use hash links
-  const linkPath = id === 'greenvita' ? '/greenvita' : `#${id}`;
+  const linkPath = id === 'greenvita' ? '/greenvita' : 
+                  id === 'soilxpert' ? '/soilxpert' :
+                  id === 'agriverse' ? '/agriverse' :
+                  id === 'yieldmart' ? '/yieldmart' :
+                  id === 'agrigear' ? '/agrigear' :
+                  id === 'skycast' ? '/skycast' : `#${id}`;
   
   return (
     <div 
