@@ -20,7 +20,8 @@ interface FeedbackFormProps {
 }
 
 const FeedbackForm: React.FC<FeedbackFormProps> = ({ language }) => {
-  const t = translations[language];
+  // Make sure we have a valid translation object by defaulting to 'en' if the requested language isn't available
+  const t = translations[language] || translations['en'];
   
   // Define form
   const form = useForm({
@@ -51,7 +52,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ language }) => {
         <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
           <div className="p-8">
             <h2 className="text-2xl font-bold text-center mb-6 text-agro-800">
-              {t.feedbackTitle}
+              {t.feedbackFormTitle || 'We Value Your Feedback'}
             </h2>
             
             <Form {...form}>
@@ -61,7 +62,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ language }) => {
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t.yourName}</FormLabel>
+                      <FormLabel>{t.name || 'Name'}</FormLabel>
                       <FormControl>
                         <Input placeholder="John Doe" {...field} />
                       </FormControl>
@@ -75,7 +76,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ language }) => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t.yourEmail}</FormLabel>
+                      <FormLabel>{t.email || 'Email'}</FormLabel>
                       <FormControl>
                         <Input placeholder="john@example.com" {...field} />
                       </FormControl>
@@ -89,10 +90,10 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ language }) => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>{t.yourMessage}</FormLabel>
+                      <FormLabel>{t.message || 'Message'}</FormLabel>
                       <FormControl>
                         <Textarea 
-                          placeholder="Please share your thoughts with us..." 
+                          placeholder={t.feedbackFormDescription || "Please share your thoughts with us..."} 
                           className="min-h-[120px]"
                           {...field} 
                         />
@@ -106,7 +107,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({ language }) => {
                   type="submit" 
                   className="w-full bg-agro-600 hover:bg-agro-700 text-white transition-colors"
                 >
-                  {t.submit}
+                  {t.submit || 'Submit'}
                 </Button>
               </form>
             </Form>

@@ -19,14 +19,27 @@ interface LanguageSelectorProps {
 }
 
 const LanguageSelector: React.FC<LanguageSelectorProps> = ({ language, setLanguage }) => {
-  const t = translations[language];
+  // Make sure we have a valid translation object by defaulting to 'en' if the requested language isn't available
+  const t = translations[language] || translations['en'];
+  
+  // Default language labels if translations are missing
+  const languageLabels = {
+    language: t?.language || "Language",
+    english: t?.english || "English",
+    hindi: t?.hindi || "Hindi",
+    tamil: t?.tamil || "Tamil",
+    telugu: t?.telugu || "Telugu",
+    bengali: t?.bengali || "Bengali",
+    marathi: t?.marathi || "Marathi",
+    kannada: t?.kannada || "Kannada"
+  };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="sm" className="flex items-center gap-1 h-9 px-3 text-sm">
           <Globe className="h-4 w-4 opacity-70" />
-          <span className="hidden sm:inline">{t.language}</span>
+          <span className="hidden sm:inline">{languageLabels.language}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-40 animate-fade-in">
@@ -36,49 +49,49 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ language, setLangua
             className="flex items-center justify-between cursor-pointer" 
             onClick={() => setLanguage('en')}
           >
-            {t.english}
+            {languageLabels.english}
             {language === 'en' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
           <DropdownMenuItem 
             className="flex items-center justify-between cursor-pointer" 
             onClick={() => setLanguage('hi')}
           >
-            {t.hindi}
+            {languageLabels.hindi}
             {language === 'hi' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
           <DropdownMenuItem 
             className="flex items-center justify-between cursor-pointer" 
             onClick={() => setLanguage('ta')}
           >
-            {t.tamil}
+            {languageLabels.tamil}
             {language === 'ta' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
           <DropdownMenuItem 
             className="flex items-center justify-between cursor-pointer" 
             onClick={() => setLanguage('te')}
           >
-            {t.telugu}
+            {languageLabels.telugu}
             {language === 'te' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
           <DropdownMenuItem 
             className="flex items-center justify-between cursor-pointer" 
             onClick={() => setLanguage('bn')}
           >
-            {t.bengali}
+            {languageLabels.bengali}
             {language === 'bn' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
           <DropdownMenuItem 
             className="flex items-center justify-between cursor-pointer" 
             onClick={() => setLanguage('mr')}
           >
-            {t.marathi}
+            {languageLabels.marathi}
             {language === 'mr' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
           <DropdownMenuItem 
             className="flex items-center justify-between cursor-pointer" 
             onClick={() => setLanguage('kn')}
           >
-            {t.kannada}
+            {languageLabels.kannada}
             {language === 'kn' && <Check className="h-4 w-4" />}
           </DropdownMenuItem>
         </DropdownMenuGroup>

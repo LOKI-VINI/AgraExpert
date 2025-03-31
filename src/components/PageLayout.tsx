@@ -23,7 +23,7 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     if (language === 'en') {
       setLanguage('kn');
     }
-  }, []);
+  }, [language, setLanguage]); // Add proper dependencies
   
   return (
     <div className="flex flex-col min-h-screen">
