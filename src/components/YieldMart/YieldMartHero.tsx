@@ -7,8 +7,11 @@ interface YieldMartHeroProps {
 }
 
 const YieldMartHero: React.FC<YieldMartHeroProps> = ({ language }) => {
-  // Make sure we have a valid translation, defaulting to English if necessary
-  const t = translations[language] || translations['en'] || {};
+  // Ensure we always have a valid language value
+  const safeLanguage = language || 'kn';
+  
+  // Make sure we have a valid translation object
+  const t = translations[safeLanguage] || translations['en'] || {};
   
   // Fallback texts
   const fallbackTitle = "Connect with Verified Buyers – Maximize Your Yield Profits";
