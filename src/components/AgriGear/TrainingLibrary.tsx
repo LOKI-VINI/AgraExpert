@@ -1,11 +1,13 @@
 
-import React, { useState } from 'react';
-import { Search, PlayCircle, Filter } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Search, PlayCircle, Filter, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { translations } from '@/lib/translations';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 interface TrainingLibraryProps {
   language: string;
@@ -18,53 +20,65 @@ interface VideoTutorial {
   duration: string;
   category: string;
   featured: boolean;
+  video_url: string;
+  description?: string;
 }
 
 const TrainingLibrary: React.FC<TrainingLibraryProps> = ({ language }) => {
   const t = translations[language];
+  const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState('');
+  const [videoTutorials, setVideoTutorials] = useState<VideoTutorial[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [currentTab, setCurrentTab] = useState('all');
   
-  // Mock video tutorials data
-  const videoTutorials: VideoTutorial[] = [
-    {
-      id: '1',
-      title: 'Modern Tractor Operation Basics',
-      thumbnail: 'https://images.unsplash.com/photo-1568115286200-a7c91cbc2575?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      duration: '15:20',
-      category: 'tractors',
-      featured: true
-    },
-    {
-      id: '2',
-      title: 'Efficient Plowing Techniques',
-      thumbnail: 'https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      duration: '10:45',
-      category: 'plows',
-      featured: false
-    },
-    {
-      id: '3',
-      title: 'Agricultural Drone Piloting Guide',
-      thumbnail: 'https://images.unsplash.com/photo-1508444845599-5c89863b1c44?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      duration: '22:15',
-      category: 'drones',
-      featured: true
-    },
-    {
-      id: '4',
-      title: 'Harvester Maintenance and Operation',
-      thumbnail: 'https://images.unsplash.com/photo-1591672854444-22bdf60ca868?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
-      duration: '18:30',
-      category: 'harvesters',
-      featured: false
+  // Fetch video tutorials from Supabase
+  useEffect(() => {
+    async function fetchVideos() {
+      try {
+        setLoading(true);
+        const { data, error } = await supabase
+          .from('training_videos')
+          .select('*');
+        
+        if (error) {
+          console.error('Error fetching videos:', error);
+          toast({
+            title: t.errorOccurred || 'Error',
+            description: t.couldNotLoadVideos || 'Could not load training videos',
+            variant: 'destructive',
+          });
+          return;
+        }
+        
+        setVideoTutorials(data as VideoTutorial[]);
+      } catch (err) {
+        console.error('Exception fetching videos:', err);
+      } finally {
+        setLoading(false);
+      }
     }
-  ];
+    
+    fetchVideos();
+  }, [t, toast]);
   
-  // Filter videos based on search query
-  const filteredVideos = videoTutorials.filter((video) => 
-    video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    video.category.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Filter videos based on search query and current tab
+  const filteredVideos = videoTutorials.filter((video) => {
+    const matchesSearch = 
+      video.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (video.description && video.description.toLowerCase().includes(searchQuery.toLowerCase()));
+    
+    return matchesSearch && (currentTab === 'all' || video.category === currentTab);
+  });
+  
+  const handleTabChange = (value: string) => {
+    setCurrentTab(value);
+  };
+  
+  const handleVideoClick = (video: VideoTutorial) => {
+    // Open the video URL in a new tab
+    window.open(video.video_url, '_blank');
+  };
   
   return (
     <section id="training-library" className="py-6">
@@ -90,7 +104,7 @@ const TrainingLibrary: React.FC<TrainingLibraryProps> = ({ language }) => {
         </div>
       </div>
       
-      <Tabs defaultValue="all">
+      <Tabs defaultValue="all" onValueChange={handleTabChange}>
         <TabsList className="mb-6">
           <TabsTrigger value="all">{t.allEquipment}</TabsTrigger>
           <TabsTrigger value="tractors">{t.tractors}</TabsTrigger>
@@ -99,69 +113,50 @@ const TrainingLibrary: React.FC<TrainingLibraryProps> = ({ language }) => {
           <TabsTrigger value="harvesters">{t.harvesters}</TabsTrigger>
         </TabsList>
         
-        <TabsContent value="all" className="mt-0">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {filteredVideos.map((video) => (
-              <Card key={video.id} className="overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
-                <div className="relative">
-                  <img 
-                    src={video.thumbnail} 
-                    alt={video.title} 
-                    className="w-full h-40 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                    <PlayCircle className="h-12 w-12 text-white" />
-                  </div>
-                  <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                    {video.duration}
-                  </div>
-                  {video.featured && (
-                    <div className="absolute top-2 left-2 bg-agro-700 text-white text-xs px-2 py-1 rounded">
-                      {t.featured}
-                    </div>
-                  )}
-                </div>
-                <CardContent className="p-4">
-                  <h3 className="font-medium line-clamp-2">{video.title}</h3>
-                </CardContent>
-              </Card>
-            ))}
+        {loading ? (
+          <div className="flex justify-center items-center h-60">
+            <Loader2 className="h-8 w-8 text-agro-700 animate-spin" />
+            <span className="ml-2 text-agro-700">{t.loading || 'Loading...'}</span>
           </div>
-        </TabsContent>
-        
-        {['tractors', 'plows', 'drones', 'harvesters'].map((category) => (
-          <TabsContent key={category} value={category} className="mt-0">
+        ) : filteredVideos.length === 0 ? (
+          <div className="text-center py-10">
+            <p className="text-gray-500">{t.noVideosFound || 'No videos found matching your criteria'}</p>
+          </div>
+        ) : (
+          <TabsContent value={currentTab} className="mt-0">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {filteredVideos
-                .filter(video => video.category === category)
-                .map((video) => (
-                  <Card key={video.id} className="overflow-hidden hover:shadow-md transition-shadow cursor-pointer">
-                    <div className="relative">
-                      <img 
-                        src={video.thumbnail} 
-                        alt={video.title} 
-                        className="w-full h-40 object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                        <PlayCircle className="h-12 w-12 text-white" />
-                      </div>
-                      <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                        {video.duration}
-                      </div>
-                      {video.featured && (
-                        <div className="absolute top-2 left-2 bg-agro-700 text-white text-xs px-2 py-1 rounded">
-                          {t.featured}
-                        </div>
-                      )}
+              {filteredVideos.map((video) => (
+                <Card 
+                  key={video.id} 
+                  className="overflow-hidden hover:shadow-md transition-shadow cursor-pointer"
+                  onClick={() => handleVideoClick(video)}
+                >
+                  <div className="relative">
+                    <img 
+                      src={video.thumbnail} 
+                      alt={video.title} 
+                      className="w-full h-40 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                      <PlayCircle className="h-12 w-12 text-white" />
                     </div>
-                    <CardContent className="p-4">
-                      <h3 className="font-medium line-clamp-2">{video.title}</h3>
-                    </CardContent>
-                  </Card>
+                    <div className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                      {video.duration}
+                    </div>
+                    {video.featured && (
+                      <div className="absolute top-2 left-2 bg-agro-700 text-white text-xs px-2 py-1 rounded">
+                        {t.featured}
+                      </div>
+                    )}
+                  </div>
+                  <CardContent className="p-4">
+                    <h3 className="font-medium line-clamp-2">{video.title}</h3>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </TabsContent>
-        ))}
+        )}
       </Tabs>
     </section>
   );

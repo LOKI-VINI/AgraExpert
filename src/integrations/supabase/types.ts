@@ -191,6 +191,45 @@ export type Database = {
         }
         Relationships: []
       }
+      training_videos: {
+        Row: {
+          category: string
+          created_at: string | null
+          description: string | null
+          duration: string
+          featured: boolean | null
+          id: string
+          thumbnail: string
+          title: string
+          updated_at: string | null
+          video_url: string
+        }
+        Insert: {
+          category: string
+          created_at?: string | null
+          description?: string | null
+          duration: string
+          featured?: boolean | null
+          id?: string
+          thumbnail: string
+          title: string
+          updated_at?: string | null
+          video_url: string
+        }
+        Update: {
+          category?: string
+          created_at?: string | null
+          description?: string | null
+          duration?: string
+          featured?: boolean | null
+          id?: string
+          thumbnail?: string
+          title?: string
+          updated_at?: string | null
+          video_url?: string
+        }
+        Relationships: []
+      }
       weather_alerts: {
         Row: {
           alert_type: string
