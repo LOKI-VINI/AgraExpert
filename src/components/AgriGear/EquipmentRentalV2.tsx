@@ -62,17 +62,20 @@ interface EquipmentRentalV2Props {
   language: string;
 }
 
+// Updated Equipment interface to match Supabase schema
 interface Equipment {
   id: string;
   name: string;
-  image_url: string;
+  image_url: string | null;
   price_per_day: number;
-  category: string;
-  available: boolean;
-  description: string;
+  category?: string; // Make category optional since it's not in the Supabase schema
+  available: boolean | null;
+  description: string | null;
   location: string;
-  owner_id?: string;
+  owner_id: string;
   video_url?: string;
+  created_at?: string | null;
+  updated_at?: string | null;
 }
 
 // Form schema
@@ -133,11 +136,11 @@ const EquipmentRentalV2: React.FC<EquipmentRentalV2Props> = ({ language }) => {
           return;
         }
         
-        // Add video URLs for demonstration
+        // Add video URLs for demonstration and ensure all fields match our Equipment interface
         const equipmentWithVideos = data.map(item => ({
           ...item,
           video_url: `https://www.youtube.com/embed/${getRandomYouTubeId()}`
-        }));
+        })) as Equipment[];
         
         setEquipmentList(equipmentWithVideos);
       } catch (err) {
