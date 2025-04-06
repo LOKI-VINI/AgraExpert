@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import AgriGearHero from '@/components/AgriGear/AgriGearHero';
 import TrainingLibrary from '@/components/AgriGear/TrainingLibrary';
-import EquipmentRental from '@/components/AgriGear/EquipmentRental';
+import EquipmentRentalV2 from '@/components/AgriGear/EquipmentRentalV2';
 
 const AgriGear: React.FC = () => {
   const [language, setLanguage] = useState('kn'); // Setting Kannada as default
@@ -19,8 +19,8 @@ const AgriGear: React.FC = () => {
       heroSection={<AgriGearHero language={language} />}
     >
       <div className="space-y-16">
+        <EquipmentRentalV2 language={language} />
         <TrainingLibrary language={language} />
-        <EquipmentRental language={language} />
       </div>
     </PageLayout>
   );
