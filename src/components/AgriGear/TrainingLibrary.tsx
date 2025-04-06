@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Search, PlayCircle, Filter, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -24,8 +23,10 @@ interface VideoTutorial {
   description?: string;
 }
 
-const TrainingLibrary: React.FC<TrainingLibraryProps> = ({ language }) => {
-  const t = translations[language];
+const TrainingLibrary: React.FC<{ language: string }> = ({ language }) => {
+  // Ensure we use a valid language or fallback to English
+  const validLanguage = translations[language] ? language : 'en';
+  const t = translations[validLanguage];
   const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState('');
   const [videoTutorials, setVideoTutorials] = useState<VideoTutorial[]>([]);

@@ -7,7 +7,9 @@ interface AgriGearHeroProps {
 }
 
 const AgriGearHero: React.FC<AgriGearHeroProps> = ({ language }) => {
-  const t = translations[language];
+  // Ensure we use a valid language or fallback to English
+  const validLanguage = translations[language] ? language : 'en';
+  const t = translations[validLanguage];
   
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { format, addDays } from 'date-fns';
 import { 
@@ -62,13 +61,12 @@ interface EquipmentRentalV2Props {
   language: string;
 }
 
-// Updated Equipment interface to match Supabase schema
 interface Equipment {
   id: string;
   name: string;
   image_url: string | null;
   price_per_day: number;
-  category?: string; // Make category optional since it's not in the Supabase schema
+  category?: string;
   available: boolean | null;
   description: string | null;
   location: string;
@@ -78,7 +76,6 @@ interface Equipment {
   updated_at?: string | null;
 }
 
-// Form schema
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -90,8 +87,9 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-const EquipmentRentalV2: React.FC<EquipmentRentalV2Props> = ({ language }) => {
-  const t = translations[language];
+const EquipmentRentalV2: React.FC<{ language: string }> = ({ language }) => {
+  const validLanguage = translations[language] ? language : 'en';
+  const t = translations[validLanguage];
   const { toast } = useToast();
   const [equipmentList, setEquipmentList] = useState<Equipment[]>([]);
   const [loading, setLoading] = useState(true);
@@ -102,13 +100,11 @@ const EquipmentRentalV2: React.FC<EquipmentRentalV2Props> = ({ language }) => {
   const [submitting, setSubmitting] = useState(false);
   const [rentalSubmitted, setRentalSubmitted] = useState(false);
   
-  // Animation when scrolling into view
   const { ref: sectionRef, inView } = useInView({
     threshold: 0.2,
     triggerOnce: true,
   });
   
-  // Initialize form
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -119,7 +115,6 @@ const EquipmentRentalV2: React.FC<EquipmentRentalV2Props> = ({ language }) => {
     },
   });
   
-  // Fetch equipment from Supabase
   useEffect(() => {
     async function fetchEquipment() {
       try {
@@ -136,7 +131,6 @@ const EquipmentRentalV2: React.FC<EquipmentRentalV2Props> = ({ language }) => {
           return;
         }
         
-        // Add video URLs for demonstration and ensure all fields match our Equipment interface
         const equipmentWithVideos = data.map(item => ({
           ...item,
           video_url: `https://www.youtube.com/embed/${getRandomYouTubeId()}`
@@ -153,7 +147,6 @@ const EquipmentRentalV2: React.FC<EquipmentRentalV2Props> = ({ language }) => {
     fetchEquipment();
   }, [t, toast]);
   
-  // Helper function to get random YouTube video IDs for demonstration
   const getRandomYouTubeId = () => {
     const ids = [
       'dQw4w9WgXcQ', 
@@ -170,7 +163,6 @@ const EquipmentRentalV2: React.FC<EquipmentRentalV2Props> = ({ language }) => {
     setRentalSubmitted(false);
     setFormOpen(true);
     
-    // Reset form when selecting new equipment
     form.reset({
       name: "",
       email: "",
@@ -192,8 +184,6 @@ const EquipmentRentalV2: React.FC<EquipmentRentalV2Props> = ({ language }) => {
     setSubmitting(true);
     
     try {
-      // Here we would typically submit to the database
-      // For demo purposes, we're just showing a success message
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       toast({
@@ -240,7 +230,6 @@ const EquipmentRentalV2: React.FC<EquipmentRentalV2Props> = ({ language }) => {
         </p>
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Equipment Carousel - Left Side */}
           <div className="lg:col-span-7">
             <Carousel className="w-full">
               <CarouselContent>
@@ -310,7 +299,6 @@ const EquipmentRentalV2: React.FC<EquipmentRentalV2Props> = ({ language }) => {
             </Carousel>
           </div>
           
-          {/* Booking Form - Right Side */}
           <div className="lg:col-span-5 flex flex-col">
             <div className="bg-white rounded-2xl shadow-lg p-6 mb-6 flex-grow">
               <h3 className="text-xl font-bold mb-4">
@@ -514,7 +502,6 @@ const EquipmentRentalV2: React.FC<EquipmentRentalV2Props> = ({ language }) => {
               )}
             </div>
             
-            {/* Video Preview Area */}
             {selectedEquipment && (
               <div className="bg-white rounded-2xl shadow-lg p-6">
                 <h3 className="text-lg font-bold mb-4">
@@ -541,7 +528,6 @@ const EquipmentRentalV2: React.FC<EquipmentRentalV2Props> = ({ language }) => {
         </div>
       </div>
       
-      {/* Video Dialog */}
       <Dialog open={videoDialogOpen} onOpenChange={setVideoDialogOpen}>
         <DialogContent className="sm:max-w-[800px]">
           <DialogHeader>
